@@ -2,6 +2,7 @@
   "name": "pretty-diff",
   "version": "1.1.0",
   "description": "Generate colorized HTML diffs.",
+  "type": "module",
   "keywords": [
     "git",
     "diff"
@@ -31,6 +32,6 @@
   },
   "dependencies": {
     "github-request": "1.2.4",
-    "open": "6.4.0"
+    "open": "9.1.0"
   }
 }
