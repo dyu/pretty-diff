@@ -1,10 +1,22 @@
 #!/usr/bin/env node
 
+/*
 var fs = require( "fs" );
 var path = require( "path" );
 var os = require( "os" );
 var open = require( "open" );
 var diff = require( "./diff" );
+*/
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+import open from 'open';
+import diff from './diff.js'
+import { spawn } from 'child_process';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename); // get the name of the directory
 
 diff( process.argv.slice( 2 ).join( " " ), function( error, parsedDiff ) {
 	if ( error ) {
@@ -51,7 +63,11 @@ function generatePrettyDiff( parsedDiff ) {
 	}
 
 	fs.writeFileSync( tempPath, template.replace( "{{diff}}", diffHtml ) );
-	open( tempPath );
+  if ('linux' === process.platform) {
+    spawn('/usr/bin/xdg-open', [ tempPath ]).stderr.pipe(process.stderr)
+  } else {
+    open( tempPath );
+  }
 }
 
 var markUpDiff = function() {

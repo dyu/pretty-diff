@@ -1,6 +1,7 @@
-var spawn = require( "child_process" ).spawn;
+//var spawn = require( "child_process" ).spawn;
+import { spawn } from 'child_process';
 
-module.exports = function( args, fn ) {
+export default function( args, fn ) {
 	var stdout = "";
 	var stderr = "";
 
