@@ -16,4 +16,4 @@ else
     SCRIPT_DIR=`dirname $F`
 fi
 
-node $SCRIPT_DIR/pretty-diff.js
+node $SCRIPT_DIR/pretty-diff.js $@
