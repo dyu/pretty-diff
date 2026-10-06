@@ -42,7 +42,7 @@ diff( process.argv.slice( 2 ).join( " " ), function( error, parsedDiff ) {
 function generatePrettyDiff( parsedDiff ) {
 	var template = fs.readFileSync( __dirname + "/template.html", "utf8" );
 	var diffHtml = "";
-	var tempPath = path.join( os.tmpdir(), "diff.html" );
+	var tempPath = path.join( os.homedir(), 'Documents', "diff.html" );
 
 	for ( var file in parsedDiff ) {
 		diffHtml +=
